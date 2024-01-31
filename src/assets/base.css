@@ -1,0 +1,72 @@
+
+/* 内外边距清零 */
+* {
+  margin: 0;
+  padding: 0;
+  
+  /* c3盒子模型,即让盒子width=内容区+padding+border (不包括margin)*/
+  box-sizing: border-box;
+  /* 若设置box-sizing: content-box;则盒子的width为内容区宽度 */
+}
+
+
+/* 斜体文字不倾斜 */
+em,
+i {
+  font-style: normal
+}
+
+/* 去掉li的小圆点 */
+li {
+  list-style: none
+}
+
+img {
+  border: 0;/*照顾低版本浏览器，如果图片外面包含链接会有边框问题*/
+  vertical-align: middle
+  /* 图片与文字居中对齐 */
+}
+
+/* 鼠标放到按钮上变成小手样式 */
+button {
+  cursor: pointer
+}
+
+
+a:hover {
+  color: #c81623
+}
+
+button,
+input {
+  font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+  border: 0;
+  outline: none;
+
+}
+/* 取消轮廓 */
+input, textarea {
+  outline: none;
+}
+
+/* 取消文本域可拖拽 */
+textarea {
+  resize: none;
+}
+
+
+
+body {
+  -webkit-font-smoothing: antialiased;/*css3抗锯齿性，让文字显示更加清晰*/
+  background-color: #fff;
+
+}
+
+@font-face {
+  font-family: JinNianYeYaoJiaYouYa-2;
+  src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
+}
+@font-face {
+  font-family: MaoKenShiJinHei-2;
+  src: url('fonts/MaoKenShiJinHei-2.ttf') format('truetype');
+}
