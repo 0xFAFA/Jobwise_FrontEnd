@@ -70,3 +70,19 @@ body {
   font-family: MaoKenShiJinHei-2;
   src: url('fonts/MaoKenShiJinHei-2.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Sketch 3D';
+  src: url('fonts/Sketch 3D.otf') ;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?vqj9vr');
+  src:  url('fonts/icomoon.eot?vqj9vr#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?vqj9vr') format('truetype'),
+    url('fonts/icomoon.woff?vqj9vr') format('woff'),
+    url('fonts/icomoon.svg?vqj9vr#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

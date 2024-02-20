@@ -23,7 +23,8 @@
 
         <div class="bone_right_part">
             <div class="flex_select_box">
-                <div ref="selectBoxRef" class="flex_item" v-for="item in type_list" :key="item.value" @click="handleClick(item.value,$event)">{{ item.label }}</div>
+                <div ref="selectBoxRef" class="flex_item" v-for="(item,index) in type_list" :key="item.value" @click="handleClick(item.value,$event,index)">{{ item.label }}</div>
+                <div class="arrow">☜</div>
             </div>
 
         </div>
@@ -46,22 +47,23 @@ const current_type=ref('com_name_frequency')
 const type_list=ref([
     {
         value: 'com_name_frequency',
-        label: '公司名称 ☜'
+        label: '公司名称'
     },
     {
         value: 'com_type_frequency',
-        label: '岗位类型 ☜'
+        label: '岗位类型'
     },
     {
         value: 'com_feature_frequency',
-        label: '岗位特点 ☜'
+        label: '岗位特点'
     }
 ])
-const selectBoxRef = ref(null);
-const handleClick = (value,event) => {
-    console.log(value)
-      // 排他
-    
+const selectBoxRef = ref(null); //用于绑定dom元素
+const handleClick = (value,event,index) => {
+
+
+    // console.log(value)
+    // 排他
     const selectBox = selectBoxRef.value;
 
     for (let i = 0; i < selectBox.length; i++) {
@@ -73,12 +75,18 @@ const handleClick = (value,event) => {
 
     current_type.value=value
 
-
+    //调整箭头
+    const offset = (event.target.offsetHeight+22) * index +50 
+    // console.log(offset)
+    document.querySelector('.arrow').style.top=`${offset}px`
 }
 let myChart =null
 onMounted(async ()=>{
+    //初始化
     const selectBox = selectBoxRef.value;
-    selectBox[0].classList.add('flex_item_active');
+    selectBox[0].classList.add('flex_item_active'); 
+    const offset = 50 ;
+    document.querySelector('.arrow').style.top=`${offset}px`
 
     //创建echarts
     let chartDom = document.getElementById('echarts-main')
@@ -350,18 +358,30 @@ myChart.dispose()
 
     .flex_select_box{
         width: 82%;
-        height: 70%;
+        height: 80%;
         padding: 5px;
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         
     }
+    .arrow{
+        position: absolute;
+        height: 50px;
+        line-height: 50px;
+        top: 0px;
+        right: -20px;
+        font-size: 50px;
+        color: #000000;
+        transition: all 0.3s linear;
+
+    }
 
     .flex_item{
         width: 100%;
-        flex: 1;
+        flex: 2;
         
         margin: 10px;
         padding: 10px;
@@ -371,7 +391,7 @@ myChart.dispose()
         background-color: #d6d6d6;
         box-shadow:  0px 0px 5px 1px rgba(255, 255, 255, 0.75);
         
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 'bold';
         font-family: JinNianYeYaoJiaYouYa-2;
         
@@ -390,7 +410,7 @@ myChart.dispose()
         border-radius: 20px;
         color: #000000;
         background-color: aqua;
-        flex:2;
+        flex:3;
         
 
     }

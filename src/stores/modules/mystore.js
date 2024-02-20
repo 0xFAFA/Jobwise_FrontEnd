@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { jobRecruitmentOverallAnalysis,difficultyCoefficientAnalysis,keywordHeatAnalysis,salaryDistributionAnalysis } from '@/api/recruitment-info'
 import { employmentUnemploymentNumAnalysis } from '@/api/employment-unemployment-num-analysis'
 import { housePriceAnalysis } from '@/api/house-price-analysis'
+import { llmAssistant } from '@/api/llm-assistant'
 
 export const MyDataStore = defineStore('mystore', () => {
 
@@ -84,11 +85,50 @@ export const MyDataStore = defineStore('mystore', () => {
   }
 
 
+  const LLMAssistantData=ref([
+      {
+        role: 'user',
+        content: '你好' 
+      },
+
+      {
+        role: 'assistant',
+        content: '您好，我是大模型择业助手，你可以向我咨询任何和择业相关的问题（如：行业前景、发展、薪资。。。）？' 
+      },
+
+    ])
+
+  const addUserMessage = (sent_data) => {
+
+    LLMAssistantData.value.push({
+      role: 'user',
+      content: sent_data
+    })
+  }
+  const getLLMAssistant = async (sent_data) => {
+    console.log('请求大模型响应数据')
+
+
+    const res= await llmAssistant(sent_data)
+    const content=res.data.data
+
+    LLMAssistantData.value.push({
+      role: 'assistant',
+      content: content
+    })
+
+    console.log(content)
+  
+    
+  }
+
+
   return { 
     JobRecruitmentOverallAnalysisData, getJobRecruitmentOverallAnalysis, 
     DifficultyCoefficientAnalysisData, getDifficultyCoefficientAnalysis,
     KeywordHeatAnalysisData, getKeywordHeatAnalysis,
     SalaryDistributionAnalysisData, getSalaryDistributionAnalysis,
     EmploymentUnemploymentNumAnalysisData, getEmploymentUnemploymentNumAnalysis,
-    HousePriceAnalysisData, getHousePriceAnalysis,}
+    HousePriceAnalysisData, getHousePriceAnalysis,
+    LLMAssistantData, getLLMAssistant,addUserMessage}
 })

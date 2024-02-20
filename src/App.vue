@@ -5,12 +5,8 @@
 <template>
     
   <div class="main">
+    <RouterView></RouterView>
     
-    <div class="main_container">
-
-      <RouterView></RouterView>
-      
-    </div>
 
     <MyWave></MyWave>
 
@@ -37,16 +33,6 @@
     overflow: hidden;
     
     
-  }
-  .main_container {
-    width:88.8%;
-    height: 100%;
-    position: relative;
-    
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
 

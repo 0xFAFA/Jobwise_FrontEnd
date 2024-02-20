@@ -140,10 +140,10 @@
             legend: {
                 type: 'scroll',
                 orient: 'vertical',
-                right: 0,
+                right: 20,
                 top: 10,
                 bottom: 20,
-
+                itemGap:20
             },
             
             toolbox: {

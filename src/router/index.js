@@ -8,6 +8,7 @@ import SalaryDistributionAnalysis from '@/views/SalaryDistributionAnalysis.vue'
 import HousePriceAnalysis from '@/views/HousePriceAnalysis.vue'
 import EmploymentNumAnalysis from '@/views/EmploymentNumAnalysis.vue'
 import UnemploymentNumAnalysis from '@/views/UnemploymentNumAnalysis.vue'
+import LLMAssistant from '@/views/LLMAssistant.vue'
 
 
 const router = createRouter({
@@ -65,7 +66,11 @@ const router = createRouter({
         {
           path: '/house-price-analysis',
           component:  HousePriceAnalysis ,
-        }
+        },
+        {
+          path: '/llm-assistant',
+          component:  LLMAssistant ,
+        },
         
         
         

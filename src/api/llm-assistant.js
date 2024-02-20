@@ -20,7 +20,7 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
   (res) => {
-    ElMessage.success('服务器响应成功')
+    // ElMessage.success('服务器响应成功')
     // console.log(res,typeof(res))
     // console.log(1)
     return res
@@ -33,5 +33,9 @@ instance.interceptors.response.use(
   }
 )
 
-export default instance
-export { baseURL }
+// 获取大模型响应数据
+export const llmAssistant = (data) => instance.post('/llm-assistant',JSON.stringify(data) ,{
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })

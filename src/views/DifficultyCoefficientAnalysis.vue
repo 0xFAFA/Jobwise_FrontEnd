@@ -224,7 +224,7 @@
         width: 800px;
         height: 550px;
         position: relative;
-        left: -3%;
+        left: 0%;
         
         display: flex;
         justify-content: center;
@@ -236,7 +236,7 @@
     .tips_icon{
         position: absolute;
         top: 7%;
-        left: 82%;
+        left: 85%;
         width: 20px;
         height: 20px;
         
@@ -259,7 +259,7 @@
     .tips{
         position: absolute;
         top: 8%;
-        left: 82.5%;
+        left: 85.5%;
         width: 210px;
         height: 0px;
         padding: 0px 20px 0px 25px;

@@ -57,22 +57,22 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
         
   }
   .sailboat {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     background-image: url('@/assets/sailboat.png');
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    top: -128%;
-    left: 85%;
-    z-index: -1;
+    top: -105%;
+    left: 88%;
+    z-index: 1;
     
 
-    animation: move-boat 2.1s linear infinite ;
+    animation: move-boat 3.5s linear infinite ;
   }
   @keyframes move-boat {
     0% {
@@ -115,7 +115,8 @@
   .waves {
     width: 100%;
     height: 100%;
-    z-index: 1;
+    position: absolute;
+    z-index: 2;
 
   }
   .parallax > use {
