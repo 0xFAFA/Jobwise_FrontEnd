@@ -31,9 +31,12 @@
         { index: '前端开发', content: [ 'Vue3 Pinia Vue-router','Element-plus Echarts','Vite'  ]},
         { index: '数据处理', content: [ 'Selenium','Numpy Panda Sklearn','Pytorch Transformer','讯飞星火大模型'  ]},
         { index: '服务器开发', content: [ 'Nginx','阿里云'  ]},
-
-
     ])
+
+    const other_list= ref([
+        { icon: '', title:'author',link:'https://github.com/0xFAFA/Jobwise_FrontEnd'},
+    ])
+
 
     const handleDrawerClick = (e) => {
 
@@ -118,6 +121,22 @@
                                         <div class="item_content_row" v-for="row in item.content" :key="row">{{ row }}</div>
                                     </div>
 
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </el-carousel-item>
+
+
+                    <el-carousel-item class="item_footer">
+                        <div class="other_card">
+                            <div class="other_title">其他：</div>
+
+                            <div class="other_content">
+
+                                <div class="other_item" v-for="item in other_list" :key="item" >
+                                    <a :href="item.link" target="_blank" :title="item.title">{{ item.icon }}</a>
                                 </div>
 
                             </div>
@@ -254,7 +273,7 @@
             height: 35%;
 
             margin-top: 60px;
-            margin-bottom: 25px;
+            margin-bottom: 0px;
         }
         .el-carousel__item.item_main{
             display: flex;
@@ -297,9 +316,9 @@
 
         .el-carousel.content_footer{
             width: 85%;
-            height: 45%;
+            height: 33%;
 
-            margin-top: 50px;
+            margin-top: 40px;
         }
         .el-carousel__item.item_footer{
             display: flex;
@@ -435,6 +454,54 @@
 
             }
 
+
+            .other_card{
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+
+                margin-left: -88px;
+
+                .other_title{
+                    color: #232323;
+                    font-size:24px;
+
+                    width: 100px;
+                    margin-left: -20px;
+
+                    font-family: MaoKenShiJinHei-2;
+                }
+
+                .other_content{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .other_item{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+
+                        height: 150px;
+                        width: 150px;
+                        
+                        
+                        font-family: 'icomoon';
+
+                        
+
+                        a{
+                            color: #000;
+                            text-decoration: none;
+                            cursor: pointer;
+                            font-size: 80px;
+
+                        }
+                    }
+                
+                }
+            }
         }
 
 

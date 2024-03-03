@@ -3,9 +3,9 @@
         <div class="context_part">
 
             <div :class="inner_class_item(item.role)"  v-for="(item,index) in myDataStore.LLMAssistantData" :key="item.content" >
-                <div class="context_icon" :title="icon_tips[item.role]">
+                <a class="context_icon" :title="icon_tips[item.role]" :href="icon_link[item.role]" target="_blank">
                     {{ icon_list[item.role] }}
-                </div>
+                </a>
                 <div :class="inner_class_box(item.role)">{{ item.content }}</div>
 
             </div>
@@ -36,8 +36,12 @@
         'assistant':''
     }
     const icon_tips={
-        'user':'你',
+        'user':'user',
         'assistant':'品客'
+    }
+    const icon_link={
+        'user':'https://console.xfyun.cn/services/cbm',
+        'assistant':'https://image.baidu.com/search/index?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&dyTabStr=MCwzLDEsMiw0LDUsNiw3LDgsOQ%3D%3D&word=%E5%93%81%E5%AE%A2'
     }
 
     const is_item_loading = ref(false)
@@ -206,6 +210,8 @@
         margin: 3px 10px;
         font-family: 'icomoon';
         user-select: none;
+        color: #000;
+        text-decoration: none;
 
         animation: breath 2s linear infinite;
         
