@@ -19,7 +19,6 @@
     import * as echarts from 'echarts';
     import { onMounted,ref, watch ,onBeforeUnmount} from 'vue';
     import { MyDataStore } from '@/stores';
-    import '@/utils/ecSimpleTransform.min.js';
 
     const myDataStore = MyDataStore();
 
@@ -29,69 +28,37 @@
         //创建echarts
         let chartDom = document.getElementById('echarts-main')
         myChart= echarts.init(chartDom)
-        echarts.registerTransform(ecSimpleTransform.aggregate);
+
+        // echarts.registerTransform( ecSimpleTransform.aggregate );
         myChart.showLoading();
 
         await myDataStore.getDifficultyCoefficientAnalysis() // 获取数据
 
         myChart.hideLoading();
 
-        const boxplot_data=[['city','difficulty'],]
+        const boxplot_data=[]
+        const city_name_list=[]
         const scatter_data=[]
 
         const difficulty_total=myDataStore.DifficultyCoefficientAnalysisData.difficulty
         const mean_difficulty=myDataStore.DifficultyCoefficientAnalysisData.mean_difficulty
 
-        // console.log(1)
-        // console.log(difficulty_total)
         let index=0
         for ( let key in difficulty_total){
-            scatter_data.push([key])
-            scatter_data[index].push(mean_difficulty[key])
+            scatter_data.push(mean_difficulty[key])
 
-            difficulty_total[key].forEach((item)=>{
-                boxplot_data.push([key,item])
-            })
+            boxplot_data.push(difficulty_total[key])
+            city_name_list.push(key)
+
             index++
 
         }
+        // console.log(boxplot_data)
+        // console.log(scatter_data)
         
-
-        
-
-    
 
         const option = {
 
-            dataset: [
-                {
-                    id: 'raw',
-                    source: boxplot_data
-                },
-                
-                {
-                    id: 'difficulty_aggregate',
-                    fromDatasetId: 'raw',
-                    transform: [
-                    {
-                        type: 'ecSimpleTransform:aggregate',
-                        config: {
-                        resultDimensions: [
-                            { name: 'min', from: 'difficulty', method: 'min' },
-                            { name: 'Q1', from: 'difficulty', method: 'Q1' },
-                            { name: 'median', from: 'difficulty', method: 'median' },
-                            { name: 'Q3', from: 'difficulty', method: 'Q3' },
-                            { name: 'max', from: 'difficulty', method: 'max' },
-                            { name: 'city', from: 'city' }
-                        ],
-                        groupBy: 'city'
-                        }
-                    },
-
-                    ]
-                }
-                
-            ],
             tooltip: {
                 trigger: 'item',
                 axisPointer: {
@@ -112,7 +79,7 @@
             grid: {
                 left: '8%',
                 top: '15%',
-                right: '13%',
+                right: '12%',
                 bottom: '15%'
             },
             legend: {
@@ -120,6 +87,8 @@
             },
             xAxis: {
                 type: 'category',
+                data: city_name_list,
+
                 nameLocation: 'middle',
                 boundaryGap: true,
                 nameGap: 30,
@@ -134,6 +103,7 @@
                 type: 'value',
                 name: '难度系数',
                 position: 'right',
+                
             },
             dataZoom: [
                 
@@ -156,24 +126,17 @@
                 
             ],
             series: [
+
             {
                 name: '难度系数',
                 type: 'boxplot',
-                datasetId: 'difficulty_aggregate',
-                itemStyle: {
-                    borderColor: '#5470c6'
-                },
-                encode: {
-                y: ['min', 'Q1', 'median', 'Q3', 'max'],
-                x: 'city',
-                itemName: ['city'],
-                tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
-                }
+                data: boxplot_data,
+
             },
             {
                 type:'scatter',
                 name:'平均难度系数',
-                data: scatter_data,
+                data:scatter_data,
                 itemStyle: {
                     color: '#82e38b'
                 },
@@ -187,9 +150,11 @@
                         type: 'dashed',      
                         width: 3             
                     },
+                    
+                    
                 },
                 label: {
-                    show: true,          // 是否显示标签
+                    show: true,   // 是否显示标签
                     position: 'right',    
                     color: 'rgba(113, 118, 127,0.9)',
                 },
@@ -216,13 +181,13 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         position: relative;
         
     }
     .echarts-box {
-        width: 800px;
-        height: 550px;
+        width: 80%;
+        height: 78%;
         position: relative;
         left: 0%;
         

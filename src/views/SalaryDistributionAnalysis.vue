@@ -31,7 +31,7 @@
             '第四梯队',
             '第五梯队',
         ]
-    const tips_content=ref('薪资水平是通过层次聚类得到的，饼图中由内到外分为五个梯队，每个梯队的聚类中心即平均薪资(/元)见左侧标签')
+    const tips_content=ref('薪资水平是通过层次聚类得到的，饼图中由内到外分为五个梯队（薪资水平从低到高），每个梯队的聚类中心即平均薪资(/元)见左侧标签')
     const clusters_center=ref([])
 
     const prompt_in=()=>{
@@ -179,15 +179,15 @@
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: start;
         position: relative;
         padding-top: 35px;
         
     }
     .echarts-box {
-        width: 800px;
-        height: 520px;
+        width: 85%;
+        height: 78%;
         
         position: relative;
         
@@ -214,7 +214,7 @@
 
     $tips-pos-left: 30%;
     $tips-pos-top: 5%;
-    $tips-height: 150px;
+    $tips-height: 160px;
     $tips-width: 200px;
     .tips_icon{
         position: absolute;

@@ -1,6 +1,6 @@
 <template>
     <div class="wave">
-      <div class="sailboat"></div>
+      <div class="sailboat" title="定"></div>
 
       <svg
         class="waves"
@@ -8,26 +8,28 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 24 150 28"
         preserveAspectRatio="none"
-        shape-rendering="auto"
+        shape-rendering="auto" 
       >
-        <defs>
+        <defs >
           <path
             id="gentle-wave"
             d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
           />
         </defs>
-        <g class="parallax">
+        <g class="parallax" >
           <use
             xlink:href="#gentle-wave"
             x="48"
             y="0"
             fill="rgba(11, 72, 158,1)"
+            
           />
           <use
             xlink:href="#gentle-wave"
             x="48"
             y="3"
             fill="rgba(255, 255, 255,1)"
+            
           />
 
           <use
@@ -43,7 +45,13 @@
 </template>
 
 <script setup>
+  import { onMounted } from 'vue';
 
+  onMounted(
+    ()=>{
+      
+    }
+  )
 </script>
 
 <style lang="scss" scoped>
@@ -57,54 +65,67 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 2;
+    z-index: 3;
         
   }
   .sailboat {
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
     background-image: url('@/assets/sailboat.png');
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
     top: -105%;
-    left: 88%;
+    left: 92%;
     z-index: 1;
     
 
-    animation: move-boat 3.5s linear infinite ;
+    animation: move-boat 7s linear infinite ;
   }
+  .sailboat:hover{
+    animation-play-state: paused;
+  }
+
   @keyframes move-boat {
     0% {
       transform: translate3d(0px, 0px, 0) rotate(-10deg);
+      left: 92%;
     }
 
     13% {
       transform: translate3d(0px, -10px, 0) rotate(-15deg);
+      left: 91%;
     }
     25% {
-      transform: translate3d(0px, -20px, 0) rotate(-10deg);
+      transform: translate3d(0px, -15px, 0) rotate(-10deg);
+      left: 90%;
     }
     40% {
       transform: translate3d(0px, -10px, 0) rotate(0deg);
+      left: 89%;
     }
     50% {
       transform: translate3d(0px, 0px, 0) rotate(10deg);
+      left: 89%;
     }
   
     
     60% {
-      transform: translate3d(0px, 10px, 0) rotate(21deg);
+      transform: translate3d(0px, 10px, 0) rotate(18deg);
+      left: 90%;
     }
     75% {
-      transform: translate3d(0px, 20px, 0) rotate(10deg);
+      transform: translate3d(0px, 18px, 0) rotate(10deg);
+      left: 91%;
     }
     88% {
       transform: translate3d(0px, 10px, 0) rotate(0deg);
+      left: 92%;
     }
 
     100% {
       transform: translate3d(0px, 0px, 0) rotate(-10deg);
+      left: 92%;
     }
 
   }
@@ -116,7 +137,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
 
   }
   .parallax > use {

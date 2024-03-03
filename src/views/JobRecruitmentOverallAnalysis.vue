@@ -395,15 +395,16 @@ onBeforeUnmount(()=>{
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         
         padding-left: 20px;
         padding-top: 10px;
         
     }
     .echarts-box {
-        width: 800px;
-        height: 550px;
+
+        width: 80%;
+        height: 80%;
         
         display: flex;
         justify-content: center;
@@ -413,8 +414,8 @@ onBeforeUnmount(()=>{
     }
 
     .right_tab{
-        flex:1;
-        height: 500px;
+        width: 20%;
+        height: 80%;
 
         display: flex;
         justify-content: center;

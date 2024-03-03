@@ -62,10 +62,7 @@ body {
 
 }
 
-@font-face {
-  font-family: JinNianYeYaoJiaYouYa-2;
-  src: url('fonts/JinNianYeYaoJiaYouYa-2.ttf') format('truetype');
-}
+
 @font-face {
   font-family: MaoKenShiJinHei-2;
   src: url('fonts/MaoKenShiJinHei-2.ttf') format('truetype');

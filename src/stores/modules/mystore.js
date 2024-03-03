@@ -16,7 +16,7 @@ export const MyDataStore = defineStore('mystore', () => {
       console.log('请求招聘岗位整体情况分析数据')
       const res= await jobRecruitmentOverallAnalysis()
       JobRecruitmentOverallAnalysisData.value = res.data.data
-      console.log(JobRecruitmentOverallAnalysisData.value['city_name_list'])
+      // console.log(JobRecruitmentOverallAnalysisData.value['city_name_list'])
     }
     
   }
@@ -30,7 +30,7 @@ export const MyDataStore = defineStore('mystore', () => {
       console.log('请求招聘岗位难度系数分析数据')
       const res= await difficultyCoefficientAnalysis()
       DifficultyCoefficientAnalysisData.value = res.data.data
-      console.log(DifficultyCoefficientAnalysisData.value['difficulty'])
+      // console.log(DifficultyCoefficientAnalysisData.value['difficulty'])
     }
     
   }
@@ -43,7 +43,7 @@ export const MyDataStore = defineStore('mystore', () => {
       console.log('请求招聘岗位关键词热度分析数据')
       const res= await keywordHeatAnalysis()
       KeywordHeatAnalysisData.value = res.data.data
-      console.log(KeywordHeatAnalysisData.value['com_name_frequency'])
+      // console.log(KeywordHeatAnalysisData.value['com_name_frequency'])
     }
     
   }
@@ -55,7 +55,7 @@ export const MyDataStore = defineStore('mystore', () => {
       console.log('请求招聘岗位薪资水平分布数据')
       const res= await salaryDistributionAnalysis()
       SalaryDistributionAnalysisData.value = res.data.data
-      console.log(SalaryDistributionAnalysisData.value[0])
+      // console.log(SalaryDistributionAnalysisData.value[0])
     }
     
   }
@@ -67,7 +67,7 @@ export const MyDataStore = defineStore('mystore', () => {
       console.log('请求城市就业失业人数分析数据')
       const res= await employmentUnemploymentNumAnalysis()
       EmploymentUnemploymentNumAnalysisData.value = res.data.data
-      console.log(EmploymentUnemploymentNumAnalysisData.value['EmploymentNumAnalysis'])
+      // console.log(EmploymentUnemploymentNumAnalysisData.value['EmploymentNumAnalysis'])
     }
     
   }
@@ -79,7 +79,7 @@ export const MyDataStore = defineStore('mystore', () => {
       console.log('请求城市房价原始与预测分析数据')
       const res= await housePriceAnalysis()
       HousePriceAnalysisData.value = res.data.data
-      console.log(HousePriceAnalysisData.value['time_label'])
+      // console.log(HousePriceAnalysisData.value['time_label'])
     }
     
   }
@@ -88,12 +88,12 @@ export const MyDataStore = defineStore('mystore', () => {
   const LLMAssistantData=ref([
       {
         role: 'user',
-        content: '你好' 
+        content: '你好，品客' 
       },
 
       {
         role: 'assistant',
-        content: '您好，我是大模型择业助手，你可以向我咨询任何和择业相关的问题（如：行业前景、发展、薪资。。。）？' 
+        content: '您好，我是大模型择业助手，你可以向我咨询任何和择业相关的问题（如：行业前景、发展、薪资、建议。。。），人多或者答案较长时，可能会有延迟' 
       },
 
     ])

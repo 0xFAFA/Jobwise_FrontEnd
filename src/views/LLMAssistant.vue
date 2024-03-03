@@ -3,12 +3,14 @@
         <div class="context_part">
 
             <div :class="inner_class_item(item.role)"  v-for="(item,index) in myDataStore.LLMAssistantData" :key="item.content" >
-                <div class="context_icon" >
+                <div class="context_icon" :title="icon_tips[item.role]">
                     {{ icon_list[item.role] }}
                 </div>
                 <div :class="inner_class_box(item.role)">{{ item.content }}</div>
 
             </div>
+
+            <div class="item_loading" v-loading="true" v-show="is_item_loading" element-loading-background="rgba(0,0,0,0)"></div>
 
         </div>
 
@@ -16,14 +18,14 @@
             <textarea class="input_part" @keydown="sent_input" @keyup="judge_clear" placeholder="请输入..."
              v-model="message"></textarea>
 
-             <div class="enter_btn" @click="click_enter_btn">&#xe970;</div>
+             <div class="enter_btn" @click="click_enter_btn" title="发射">&#xe970;</div>
         </div>
         
     </div>
 </template>
 
 <script setup>
-    import { onMounted,onUnmounted,ref, watch,onBeforeUnmount,computed } from 'vue';
+    import { onMounted,onUnmounted,ref, watch,onBeforeUnmount,computed,  nextTick  } from 'vue';
     import { MyDataStore } from '@/stores';
 
     const myDataStore = MyDataStore();
@@ -33,6 +35,12 @@
         'user':'',
         'assistant':''
     }
+    const icon_tips={
+        'user':'你',
+        'assistant':'品客'
+    }
+
+    const is_item_loading = ref(false)
 
     const click_enter_btn=()=>{
         const textarea = document.querySelector('.input_part');
@@ -58,12 +66,22 @@
             // console.log(temp_question)
             
             await myDataStore.addUserMessage(temp_question)
-            const context_part = document.querySelector('.context_part');
-            context_part.scrollTop = context_part.scrollHeight;
+            
+            
 
-            await myDataStore.getLLMAssistant(temp_question)
+            is_item_loading.value = true
+            //等待dom更新完
+            nextTick(async ()=>{
+                const context_part = document.querySelector('.context_part');
+                context_part.scrollTop = context_part.scrollHeight;
 
-            context_part.scrollTop = context_part.scrollHeight;
+                await myDataStore.getLLMAssistant(temp_question)
+
+                is_item_loading.value = false
+                context_part.scrollTop = context_part.scrollHeight;
+            })
+
+            
 
         }
     }
@@ -135,13 +153,13 @@
         align-items: center;
         flex-direction: column;
         position: relative;
-        padding: 0px 40px;
+        padding: 10px 40px;
         
         
     }
     .context_part{
         width: 97%;
-        height: 490px;
+        height: 450px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -150,7 +168,7 @@
 
         overflow-y: scroll;
 
-        padding: 0 25px 0 10px;
+        padding: 10px 25px 10px 10px;
         scroll-behavior: smooth;
     }
     .context_part::-webkit-scrollbar{
@@ -189,7 +207,20 @@
         font-family: 'icomoon';
         user-select: none;
 
-
+        animation: breath 2s linear infinite;
+        
+    }
+    @keyframes breath{
+        0%{
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+        }
+        50%{
+            text-shadow: 0px 0px 20px  rgba(63, 231, 246, 0.9);
+            
+        }
+        100%{
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+        }
     }
 
     .context_box{
@@ -281,6 +312,14 @@
     textarea::-webkit-scrollbar-thumb {
         background: rgb(255, 255, 255);
         border-radius: 4px;
+    }
+
+
+    .item_loading{
+        width: 100%;
+        height: 50px;
+        margin-top: 50px;
+        background-color: transparent;
     }
 
 </style>

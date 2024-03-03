@@ -175,8 +175,8 @@
         
     }
     .echarts-box {
-        width: 900px;
-        height: 550px;
+        width: 100%;
+        height: 80%;
         
         position: relative;
         

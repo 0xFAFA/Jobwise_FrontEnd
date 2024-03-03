@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-const baseURL = 'http://127.0.0.1:5000'
+const baseURL = 'http://8.138.17.252:9999'
+// const baseURL = 'http://127.0.0.1:5000'
 
 const instance = axios.create({
   // 基础地址，超时时间
   baseURL,
-  timeout: 8000
+  timeout: 20000
 })
 
 // 请求拦截器

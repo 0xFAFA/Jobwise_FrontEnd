@@ -65,7 +65,7 @@
                 const temp_item_data=[]
                 temp_item_data.push(key)
                 temp_item_data.push(
-                    (house_price_pre_data[key].reduce((acc, curr) => acc + curr, 0))/data_len
+                    (house_price_pre_data[key].reduce((acc, curr) => acc + curr, 0))/data_len //计算平均值
                     )
 
                 temp_sort_data.push(temp_item_data)
@@ -74,7 +74,8 @@
             temp_sort_data.sort((a,b)=>{
                 return b[1]-a[1]
             })
-            console.log(temp_sort_data)
+            // console.log(temp_sort_data)
+            
 
             
             const line_raw_data={
@@ -418,8 +419,8 @@
         
     }
     .echarts-box {
-        width: 900px;
-        height: 550px;
+        width: 90%;
+        height: 80%;
         
         position: relative;
         padding-top: 30px;

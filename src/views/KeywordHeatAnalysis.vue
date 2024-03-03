@@ -24,7 +24,7 @@
         <div class="bone_right_part">
             <div class="flex_select_box">
                 <div ref="selectBoxRef" class="flex_item" v-for="(item,index) in type_list" :key="item.value" @click="handleClick(item.value,$event,index)">{{ item.label }}</div>
-                <div class="arrow">☜</div>
+                <div class="arrow" title="搜狗输入法☺">☜</div>
             </div>
 
         </div>
@@ -146,7 +146,7 @@ onMounted(async ()=>{
                     right: null,
                     bottom: null,
 
-                    sizeRange: [15, 60],
+                    sizeRange: [17, 37],
 
                     rotationRange: [-90, 90],
                     rotationStep: 45,
@@ -233,7 +233,7 @@ onMounted(async ()=>{
                     right: null,
                     bottom: null,
 
-                    sizeRange: [15, 60],
+                    sizeRange: [17, 37],
 
                     rotationRange: [-90, 90],
                     rotationStep: 45,
@@ -293,32 +293,37 @@ myChart.dispose()
         height: 100%;
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         
         padding-left: 20px;
         padding-top: 20px;
         overflow: hidden;
+
+        position: relative;
     }
     .bone_left_part{
-        width: 950px;
-        height: 100%;
+        width: 100%;
+        height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        position: relative;
 
-        left: -13%;
+        position: relative;
+        left: -12%;
         
     }   
     .echarts-box {
         width: 100%;
-        height: 550px;
+        height: 100%;
         margin-top: 20px;
         
         display: flex;
         justify-content: center;
         align-items: center;
+
+        position: relative;
+        top: -4%;
         
         
     }
@@ -344,20 +349,25 @@ myChart.dispose()
 
     .bone_right_part{
         width: 20%;
-        height: 70%;
-        position: absolute;
-        right: 4%;
+        height: 500px;
+        
         
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         border-left: 1px dashed #f8f7f7;
-        
+
+        position: absolute;
+        right: 1%;        
+        top: 44%;
+
+        transform: translateY(-50%);
+
     }
 
     .flex_select_box{
-        width: 82%;
+        width: 80%;
         height: 80%;
         padding: 5px;
         position: relative;
@@ -372,11 +382,12 @@ myChart.dispose()
         height: 50px;
         line-height: 50px;
         top: 0px;
-        right: -20px;
+        right: -30px;
         font-size: 50px;
         color: #000000;
         transition: all 0.3s linear;
 
+        user-select: none;
     }
 
     .flex_item{
@@ -393,7 +404,7 @@ myChart.dispose()
         
         font-size: 25px;
         font-weight: 'bold';
-        font-family: JinNianYeYaoJiaYouYa-2;
+        font-family: MaoKenShiJinHei-2;
         
         display: flex;
         justify-content: center;
@@ -408,7 +419,7 @@ myChart.dispose()
         box-shadow:  0px 0px 5px 5px rgba(255, 255, 255, 0.75);
         
         border-radius: 20px;
-        color: #000000;
+        color: #323131;
         background-color: aqua;
         flex:3;
         

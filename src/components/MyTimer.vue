@@ -67,11 +67,14 @@ onMounted(()=>{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-left: 8px;
 
         width: 100%;
         height: 100%;
 
         font-family: 'Sketch 3D';
+
+        border-left: 1px dashed #ffffff;
         
     }
     .bottom_box{
@@ -86,19 +89,21 @@ onMounted(()=>{
     .timer span {
         display: inline-block;
                 
-        color: rgba(45, 45, 45, 0.9);
-        font-weight: 600;
+        color: rgba(0, 0, 0, 1);
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+        font-weight: 400;
         margin: 1px 2px;
+
 
         user-select: none;
         /* 防止文本被选中 */
         
     }
     .up {
-        font-size: 27px;
+        font-size: 24px;
     }
     .down {
-        font-size: 19px;
+        font-size: 20px;
     }
 
 
