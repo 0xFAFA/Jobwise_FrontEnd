@@ -247,6 +247,8 @@
         
         border-radius: 11px;
         white-space: pre-line;
+        word-wrap: break-word;
+        word-break: break-all;
     }
 
     .assistant_box{
